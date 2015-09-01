@@ -1,0 +1,25 @@
+•	global email posting queue that is hosted in Windows Azure
+•	queue will have Guid's as ids
+•	all dates & times will be in UTC format
+•	access will be granted via Keys (KeyId, OrganizationId, ApiKey, DateDeleted)
+•	it will be possible to make a key expired (in case of a key being compromised)
+•	there needs to be a table of Organizations (OrganizationId, Name)  (e.g. CLC, College, etc.)
+•	the service will be a REST based service that will be hosted in Azure
+•	there will need to exists DEV, QA, Live environments
+•	implement stops that will ensure that we do not send too many emails accidentally or same email twice!)
+•	the emails that are delivered need to be moved to a log, keeping the queue table small for performance
+•	once the email is delivered store the information about the delivery of the email (hopefully, this can be pulled from Sendgrid)
+•	make the design not too dependable on 1 SMTP service provider (in case we decide to change the provider)
+•	admins will be able to login to the dashboard and will be able to search for emails  (no user management screen in Phase 1)
+•	it will be possible to use this service by multiple WMW | IMG projects (just having key and url is sufficient to call the service)
+•	create a a client that looks like SmtpClient for sending email to the rest services
+•	the admin user will have the ability to resend an email that could not be delivered (by changing a flag)
+•	it will be possible to send emails with attachments (store attachments in One Drive)
+•	it is required to capture the reason why the email was not delivered (if possible to retrieve from Sendgrid)
+•	emails will be sent out via Sendgrid account (but make switchable)
+•	initially, the POC can be done locally, no Azure subscription is required
+•	all progressed should be committed regularly into github.
+
+or 
+
+investigate how much of this is possible using the Sendgrid API.

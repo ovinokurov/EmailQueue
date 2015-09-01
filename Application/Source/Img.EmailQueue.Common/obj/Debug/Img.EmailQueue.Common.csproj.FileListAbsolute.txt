@@ -1,0 +1,5 @@
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Common\bin\Debug\Img.EmailQueue.Common.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Common\bin\Debug\Img.EmailQueue.Common.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Common\obj\Debug\Img.EmailQueue.Common.csprojResolveAssemblyReference.cache
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Common\obj\Debug\Img.EmailQueue.Common.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Common\obj\Debug\Img.EmailQueue.Common.pdb

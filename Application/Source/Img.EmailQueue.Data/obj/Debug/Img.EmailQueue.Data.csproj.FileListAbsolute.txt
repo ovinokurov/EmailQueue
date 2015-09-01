@@ -1,0 +1,12 @@
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\Img.EmailQueue.Data.dll.config
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\Img.EmailQueue.Data.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\Img.EmailQueue.Data.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\EntityFramework.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\Img.EmailQueue.Common.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\Img.EmailQueue.Common.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\EntityFramework.xml
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\obj\Debug\Img.EmailQueue.Data.csprojResolveAssemblyReference.cache
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\obj\Debug\Img.EmailQueue.Data.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Data\obj\Debug\Img.EmailQueue.Data.pdb

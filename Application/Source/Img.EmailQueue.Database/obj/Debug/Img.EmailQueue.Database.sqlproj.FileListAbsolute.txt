@@ -1,0 +1,5 @@
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Database\bin\Debug\Img.EmailQueue.Database.dacpac
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Database\bin\Debug\Img.EmailQueue.Database.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Database\bin\Debug\Img.EmailQueue.Database.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Database\obj\Debug\Img.EmailQueue.Database.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Database\obj\Debug\Img.EmailQueue.Database.pdb

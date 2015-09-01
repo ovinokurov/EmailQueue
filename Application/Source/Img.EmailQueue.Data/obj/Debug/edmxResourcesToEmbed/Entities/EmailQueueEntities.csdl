@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmailQueueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EmailQueueConnections" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ApiKeys" EntityType="EmailQueueModel.ApiKey" />
+    <EntitySet Name="Attachments" EntityType="EmailQueueModel.Attachment" />
+    <EntitySet Name="Emails" EntityType="EmailQueueModel.Email" />
+    <EntitySet Name="Messages" EntityType="EmailQueueModel.Message" />
+    <EntitySet Name="Organizations" EntityType="EmailQueueModel.Organization" />
+    <EntitySet Name="QueueArchives" EntityType="EmailQueueModel.QueueArchive" />
+    <EntitySet Name="QueueMasters" EntityType="EmailQueueModel.QueueMaster" />
+    <EntitySet Name="Status" EntityType="EmailQueueModel.Status" />
+    <EntitySet Name="sysdiagrams" EntityType="EmailQueueModel.sysdiagram" />
+    <AssociationSet Name="FK_ApiKey_Organization" Association="EmailQueueModel.FK_ApiKey_Organization">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="ApiKey" EntitySet="ApiKeys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attachment_Message" Association="EmailQueueModel.FK_Attachment_Message">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="Attachment" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_Message" Association="EmailQueueModel.FK_Email_Message">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueArchive_Message" Association="EmailQueueModel.FK_QueueArchive_Message">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="QueueArchive" EntitySet="QueueArchives" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueMaster_Message" Association="EmailQueueModel.FK_QueueMaster_Message">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="QueueMaster" EntitySet="QueueMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueArchive_Organization" Association="EmailQueueModel.FK_QueueArchive_Organization">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="QueueArchive" EntitySet="QueueArchives" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueMaster_Organization" Association="EmailQueueModel.FK_QueueMaster_Organization">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="QueueMaster" EntitySet="QueueMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueArchive_Status" Association="EmailQueueModel.FK_QueueArchive_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="QueueArchive" EntitySet="QueueArchives" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueMaster_Status" Association="EmailQueueModel.FK_QueueMaster_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="QueueMaster" EntitySet="QueueMasters" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ApiKey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrganizationId" Type="Int64" Nullable="false" />
+    <Property Name="ApiKey1" Type="Guid" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Organization" Relationship="EmailQueueModel.FK_ApiKey_Organization" FromRole="ApiKey" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="Attachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttachmentUri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MessageId" Type="Int64" Nullable="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Message" Relationship="EmailQueueModel.FK_Attachment_Message" FromRole="Attachment" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageId" Type="Int64" />
+    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsSender" Type="Boolean" Nullable="false" />
+    <Property Name="IsReciever" Type="Boolean" Nullable="false" />
+    <Property Name="isBcc" Type="Boolean" />
+    <Property Name="isCc" Type="Boolean" />
+    <NavigationProperty Name="Message" Relationship="EmailQueueModel.FK_Email_Message" FromRole="Email" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Body" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="CC" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Bcc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IsBodyHtml" Type="Boolean" />
+    <NavigationProperty Name="Attachments" Relationship="EmailQueueModel.FK_Attachment_Message" FromRole="Message" ToRole="Attachment" />
+    <NavigationProperty Name="Emails" Relationship="EmailQueueModel.FK_Email_Message" FromRole="Message" ToRole="Email" />
+    <NavigationProperty Name="QueueArchives" Relationship="EmailQueueModel.FK_QueueArchive_Message" FromRole="Message" ToRole="QueueArchive" />
+    <NavigationProperty Name="QueueMasters" Relationship="EmailQueueModel.FK_QueueMaster_Message" FromRole="Message" ToRole="QueueMaster" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ApiKeys" Relationship="EmailQueueModel.FK_ApiKey_Organization" FromRole="Organization" ToRole="ApiKey" />
+    <NavigationProperty Name="QueueArchives" Relationship="EmailQueueModel.FK_QueueArchive_Organization" FromRole="Organization" ToRole="QueueArchive" />
+    <NavigationProperty Name="QueueMasters" Relationship="EmailQueueModel.FK_QueueMaster_Organization" FromRole="Organization" ToRole="QueueMaster" />
+  </EntityType>
+  <EntityType Name="QueueArchive">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QueueId" Type="Guid" />
+    <Property Name="OrganizationId" Type="Int64" />
+    <Property Name="QueueOrder" Type="Int64" />
+    <Property Name="QueuedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProcessedDate" Type="DateTime" Precision="3" />
+    <Property Name="Attempts" Type="Int32" />
+    <Property Name="Retry" Type="Boolean" />
+    <Property Name="MessageId" Type="Int64" />
+    <Property Name="StatusId" Type="Int32" />
+    <Property Name="DeliveredDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Message" Relationship="EmailQueueModel.FK_QueueArchive_Message" FromRole="QueueArchive" ToRole="Message" />
+    <NavigationProperty Name="Organization" Relationship="EmailQueueModel.FK_QueueArchive_Organization" FromRole="QueueArchive" ToRole="Organization" />
+    <NavigationProperty Name="Status" Relationship="EmailQueueModel.FK_QueueArchive_Status" FromRole="QueueArchive" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="QueueMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationId" Type="Int64" Nullable="false" />
+    <Property Name="QueuedOrder" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QueuedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProcessedDate" Type="DateTime" Precision="3" />
+    <Property Name="Attempts" Type="Int32" />
+    <Property Name="Retry" Type="Boolean" Nullable="false" />
+    <Property Name="MessageId" Type="Int64" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Message" Relationship="EmailQueueModel.FK_QueueMaster_Message" FromRole="QueueMaster" ToRole="Message" />
+    <NavigationProperty Name="Organization" Relationship="EmailQueueModel.FK_QueueMaster_Organization" FromRole="QueueMaster" ToRole="Organization" />
+    <NavigationProperty Name="Status" Relationship="EmailQueueModel.FK_QueueMaster_Status" FromRole="QueueMaster" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="QueueArchives" Relationship="EmailQueueModel.FK_QueueArchive_Status" FromRole="Status" ToRole="QueueArchive" />
+    <NavigationProperty Name="QueueMasters" Relationship="EmailQueueModel.FK_QueueMaster_Status" FromRole="Status" ToRole="QueueMaster" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_ApiKey_Organization">
+    <End Type="EmailQueueModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="EmailQueueModel.ApiKey" Role="ApiKey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApiKey">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attachment_Message">
+    <End Type="EmailQueueModel.Message" Role="Message" Multiplicity="1" />
+    <End Type="EmailQueueModel.Attachment" Role="Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attachment">
+        <PropertyRef Name="MessageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_Message">
+    <End Type="EmailQueueModel.Message" Role="Message" Multiplicity="0..1" />
+    <End Type="EmailQueueModel.Email" Role="Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="MessageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueArchive_Message">
+    <End Type="EmailQueueModel.Message" Role="Message" Multiplicity="0..1" />
+    <End Type="EmailQueueModel.QueueArchive" Role="QueueArchive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueueArchive">
+        <PropertyRef Name="MessageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueMaster_Message">
+    <End Type="EmailQueueModel.Message" Role="Message" Multiplicity="1" />
+    <End Type="EmailQueueModel.QueueMaster" Role="QueueMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueueMaster">
+        <PropertyRef Name="MessageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueArchive_Organization">
+    <End Type="EmailQueueModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="EmailQueueModel.QueueArchive" Role="QueueArchive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueueArchive">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueMaster_Organization">
+    <End Type="EmailQueueModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="EmailQueueModel.QueueMaster" Role="QueueMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueueMaster">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueArchive_Status">
+    <End Type="EmailQueueModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="EmailQueueModel.QueueArchive" Role="QueueArchive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueueArchive">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueMaster_Status">
+    <End Type="EmailQueueModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="EmailQueueModel.QueueMaster" Role="QueueMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueueMaster">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

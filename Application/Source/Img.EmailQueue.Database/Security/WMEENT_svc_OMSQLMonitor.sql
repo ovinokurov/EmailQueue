@@ -1,0 +1,2 @@
+﻿CREATE USER [WMEENT\svc_OMSQLMonitor] FOR LOGIN [WMEENT\svc_OMSQLMonitor];
+

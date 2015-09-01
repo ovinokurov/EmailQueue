@@ -1,0 +1,14 @@
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Core.Services.dll.config
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Core.Services.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Core.Services.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Common.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Data.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\SendGrid.SmtpApi.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\SendGridMail.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\EntityFramework.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Common.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\Img.EmailQueue.Data.pdb
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\bin\Debug\EntityFramework.xml
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\obj\Debug\Img.EmailQueue.Core.Services.csprojResolveAssemblyReference.cache
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\obj\Debug\Img.EmailQueue.Core.Services.dll
+C:\work\IMG.EmailQueue\Application\Source\Img.EmailQueue.Core.Services\obj\Debug\Img.EmailQueue.Core.Services.pdb

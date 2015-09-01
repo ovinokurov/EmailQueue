@@ -1,0 +1,33 @@
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<Img.EmailQueue.Data.Entities.QueueMaster>
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model);
+
+}
+
+
+<h2>List of Queues</h2>
+
+
+
+@{
+    //to do api function resend
+  }
+
+@grid.GetHtml(columns: new[]{
+    grid.Column("Id")
+    ,grid.Column(
+    header :"Status",
+    format: (item) =>
+    {
+        if (item.StatusId == 1)
+            return Html.Label("Deliverd");
+        else
+            return Html.ActionLink("Resend", "Resend", new { id = item.id });
+    }
+    )
+
+})
+
+    
